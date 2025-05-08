@@ -42,7 +42,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
         return CONFIRMED_UPDATES_ALL;
     }
     private void handleStartCommand(long chatId) {
-        String welcomeMessage = "Привет!!!";
+        String welcomeMessage = "Привет!!";
         SendMessage sendMessage = new SendMessage(chatId, welcomeMessage);
         telegramBot.execute(sendMessage);
     }
