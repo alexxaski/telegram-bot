@@ -22,6 +22,7 @@ public class NotificationService {
     public void processReminderMessage(String inputMessage, Long chatId) {
         Matcher matcher = pattern.matcher(inputMessage);
         if (matcher.find()) {
+
             // Группа 1 — Дата и время
             String dateTimeStr = matcher.group(1);
             // Группа 3 — Текст напоминания

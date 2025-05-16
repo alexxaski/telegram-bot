@@ -33,9 +33,7 @@ public class ScheduledNotificationServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    /**
-     * Тест на получение текущих задач и отправку уведомлений.
-     */
+
     @Test
     public void testScheduleNotifications() {
         // Подготовительные данные
@@ -56,9 +54,7 @@ public class ScheduledNotificationServiceTest {
         verify(telegramBot, times(2)).execute(any(SendMessage.class));
     }
 
-    /**
-     * Тест на случай, когда нет активных задач.
-     */
+
     @Test
     public void testNoTasksForCurrentTime() {
         // Подготовительные данные

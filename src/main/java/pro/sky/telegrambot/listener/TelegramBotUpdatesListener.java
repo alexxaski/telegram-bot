@@ -23,6 +23,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
         this.notificationService = notificationService;
     }
 
+
     @Override
     public int process(List<Update> updates) {
         for (Update update : updates) {

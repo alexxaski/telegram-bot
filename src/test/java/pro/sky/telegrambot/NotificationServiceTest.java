@@ -27,9 +27,7 @@ public class NotificationServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    /**
-     * Позитивный тест: проверяем обработку валидного сообщения.
-     */
+
     @Test
     public void testProcessReminderMessagePositiveScenario() {
         // Подготовительные данные
@@ -50,9 +48,7 @@ public class NotificationServiceTest {
         verify(notificationTaskRepository).save(expectedTask);
     }
 
-    /**
-     * Негативный тест: проверяем обработку некорректного сообщения.
-     */
+
     @Test
     public void testProcessReminderMessageNegativeScenario() {
         // Некорректное сообщение
@@ -64,5 +60,6 @@ public class NotificationServiceTest {
 
         // Проверяем, что ничего не было сохранено в репозиторий
         verify(notificationTaskRepository, never()).save(any(NotificationTask.class));
+
     }
 }
