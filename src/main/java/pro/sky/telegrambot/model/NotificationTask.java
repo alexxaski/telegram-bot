@@ -1,4 +1,4 @@
-package pro.sky.telegrambot;
+package pro.sky.telegrambot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
 
 @Entity
 public class NotificationTask {
@@ -16,13 +17,12 @@ public class NotificationTask {
 
     private Long chatId;
 
-    private String notificationText;
+    private String notificationText; // текст напоминания
 
-    private LocalDateTime scheduledTime; // Теперь используется LocalDateTime
+    private LocalDateTime scheduledTime; // Время отправки уведомления
 
     // Конструктор по умолчанию
-    public NotificationTask() {
-    }
+    public NotificationTask() {}
 
     // Конструктор с параметрами
     public NotificationTask(Long chatId, String notificationText, LocalDateTime scheduledTime) {
@@ -32,6 +32,7 @@ public class NotificationTask {
     }
 
     // Геттеры и сеттеры
+
     public Long getId() {
         return id;
     }
@@ -64,7 +65,7 @@ public class NotificationTask {
         this.scheduledTime = scheduledTime;
     }
 
-    // equals/hashCode/toString (опционально)
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
