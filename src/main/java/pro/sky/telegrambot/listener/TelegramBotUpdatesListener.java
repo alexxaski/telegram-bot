@@ -35,7 +35,8 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                 if (messageText.startsWith("/start")) {
                     SendMessage welcomeMessage = new SendMessage(chatId, "Приветствую! Я телеграм-бот @ДАША@ для напоминаний.");
                     telegramBot.execute(welcomeMessage);
-
+                    // Выход из дальнейшей обработки текущего сообщения
+                    continue;
                 }
 
                 // Если сообщение не команда, отправляем ответ "ЩА!"
