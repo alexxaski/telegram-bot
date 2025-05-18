@@ -1,5 +1,7 @@
 package pro.sky.telegrambot.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sky.telegrambot.repository.NotificationTaskRepository;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class NotificationService {
-
+    private static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
     @Autowired
     private NotificationTaskRepository notificationTaskRepository;
 
@@ -36,7 +38,7 @@ public class NotificationService {
             notificationTaskRepository.save(task);
         } else {
             // Если регулярное выражение не сработало, сообщение игнорируем
-            System.out.println("Не удалось распознать сообщение: " + inputMessage);
+            logger.warn("Не удалось распознать сообщение: {}", inputMessage);
         }
     }
 }
