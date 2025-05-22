@@ -1,9 +1,12 @@
-package pro.sky.telegrambot;
+package pro.sky.telegrambot.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pro.sky.telegrambot.NotificationTask;
-import pro.sky.telegrambot.NotificationTaskRepository;
+import pro.sky.telegrambot.repository.NotificationTaskRepository;
+import pro.sky.telegrambot.model.NotificationTask;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
@@ -11,7 +14,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class NotificationService {
-
+    private static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
     @Autowired
     private NotificationTaskRepository notificationTaskRepository;
 
@@ -21,6 +24,7 @@ public class NotificationService {
     public void processReminderMessage(String inputMessage, Long chatId) {
         Matcher matcher = pattern.matcher(inputMessage);
         if (matcher.find()) {
+
             // Группа 1 — Дата и время
             String dateTimeStr = matcher.group(1);
             // Группа 3 — Текст напоминания
@@ -34,7 +38,7 @@ public class NotificationService {
             notificationTaskRepository.save(task);
         } else {
             // Если регулярное выражение не сработало, сообщение игнорируем
-            System.out.println("Не удалось распознать сообщение: " + inputMessage);
+            logger.warn("Не удалось распознать сообщение: {}", inputMessage);
         }
     }
 }
